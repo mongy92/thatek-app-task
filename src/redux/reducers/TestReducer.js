@@ -18,7 +18,13 @@ export default (state = INIT_STATE, action) => {
         case LOADING_QUESTIONS:
             return { ...state, loading: action.payload };
         case FETCH_QUESTIONS_SUCCESS:
-            return { ...state, questions: action.payload };
+            return {
+                ...state,
+                questions: action.payload ,
+                answers : [],
+                score : 0,
+                loading : false,
+            };
         case SELECT_QUESTION_ANSWER:
             const { answers } = state;
             const { answer, index,isCorrect } = action.payload;

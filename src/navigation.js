@@ -37,6 +37,7 @@ const Navigation = createStackNavigator({
 const ResultStack = createStackNavigator({
     Result : Result
 },{
+    headerLayoutPreset:"center",
     defaultNavigationOptions: {
         headerStyle: styles.headerStyle,
         headerTintColor: "#FFF",

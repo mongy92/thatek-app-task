@@ -8,7 +8,7 @@ const reducers = combineReducers({
     test: TestReducer
 });
 
-const middleware = applyMiddleware(Thunk, Logger);
+const middleware = applyMiddleware(Thunk);
 
 export default createStore(reducers, {}, middleware);
 
