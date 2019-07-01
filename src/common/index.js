@@ -4,7 +4,15 @@ export const TEXTS = {
     start_test : "اختبر ذاتك الآن",
     next : "التالي",
     back : "السابق",
-    view_result : "عرض النتيجة"
+    test : "الاختبار",
+    thatek : "ذاتك",
+    view_result : "عرض النتيجة",
+    select_answer : "يجب عليك اختيار الاجابة",
+    ok : "موافق",
+    testResult : "نتيجة الإختبار",
+    test_score : "نتيجة الإختبار",
+    retake_test : "إعادة الإختبار",
+    home : "الصفحة الرئيسية"
 }
 export const MAIN_COLOR = "#3aad48";
 

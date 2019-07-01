@@ -6,7 +6,7 @@ import { Button } from "react-native-paper"
 export default class Home extends Component {
 
     static navigationOptions = {
-        title: "ذاتك",
+        title: TEXTS.thatek,
     }
     constructor(props) {
         super(props);

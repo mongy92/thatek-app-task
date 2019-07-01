@@ -1,4 +1,4 @@
-import { LOADING_QUESTIONS, FETCH_QUESTIONS_SUCCESS } from "./actionTypes";
+import { LOADING_QUESTIONS, FETCH_QUESTIONS_SUCCESS, SELECT_QUESTION_ANSWER } from "./actionTypes";
 import { API_URL } from "../../common";
 
 
@@ -17,4 +17,9 @@ export const fetchTaskQuestions = () => {
             dispatch({ type :  LOADING_QUESTIONS, payload: false });
         }
     }
+}
+
+
+export const onSelectAnswer = ({answer, index,isCorrect})=>{
+    return { type : SELECT_QUESTION_ANSWER , payload : {answer, index,isCorrect} }
 }

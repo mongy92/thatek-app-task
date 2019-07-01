@@ -1,23 +1,52 @@
 import {
     createAppContainer,
-    createStackNavigator
+    createStackNavigator,
+    createSwitchNavigator
 } from "react-navigation";
+import {StyleSheet} from "react-native"
 import Home from "./screens/Home";
 import Test from "./screens/Test";
+import Result from "./screens/Result";
+
+
+const styles = StyleSheet.create({
+    headerStyle: {
+        backgroundColor: "#3aad48",
+    },
+    headerTitleStyle: {
+        fontWeight: "bold",
+        fontSize: 18
+    }
+
+})
+
 const Navigation = createStackNavigator({
     Home,
-    Test
+    Test,
 }, {
+    initialRouteName : "Home",
         defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: "#3aad48",
-            },
+            headerStyle: styles.headerStyle,
             headerTintColor: "#FFF",
-            headerTitleStyle: {
-                fontWeight: "bold",
-                fontSize: 20
-            }
+            headerTitleStyle:styles.headerTitleStyle
         }
-    })
+    });
 
-export default createAppContainer(Navigation)
+
+const ResultStack = createStackNavigator({
+    Result : Result
+},{
+    defaultNavigationOptions: {
+        headerStyle: styles.headerStyle,
+        headerTintColor: "#FFF",
+        headerTitleStyle:styles.headerTitleStyle
+    }
+})
+const RootNavigation = createSwitchNavigator({
+    Main : Navigation,
+    Result  : ResultStack
+})
+
+
+export default createAppContainer(RootNavigation)
+

@@ -11,7 +11,8 @@ export default class QuestionCard extends Component {
     }
 
     onPressAnswer = (ans)=>{
-        this.setState({ selected_answer : ans })
+        this.setState({ selected_answer : ans });
+        this.props.onSelectAnswer(ans)
     }
 
 
