@@ -1,6 +1,6 @@
 import { LOADING_QUESTIONS, FETCH_QUESTIONS_SUCCESS, SELECT_QUESTION_ANSWER } from "./actionTypes";
 import { API_URL } from "../../common";
-
+import axios from "axios"
 
 //action for fetch 5 questions from the api
 export const fetchTaskQuestions = () => {
@@ -14,6 +14,7 @@ export const fetchTaskQuestions = () => {
             }
             dispatch({ type : LOADING_QUESTIONS, payload: false });
         } catch (error) {
+            console.log(error)
             dispatch({ type :  LOADING_QUESTIONS, payload: false });
         }
     }

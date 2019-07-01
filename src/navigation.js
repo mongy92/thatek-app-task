@@ -24,6 +24,7 @@ const Navigation = createStackNavigator({
     Home,
     Test,
 }, {
+    headerLayoutPreset:"center",
     initialRouteName : "Home",
         defaultNavigationOptions: {
             headerStyle: styles.headerStyle,
