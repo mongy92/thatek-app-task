@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground } from 'react-native';
+import {  Text, ImageBackground } from 'react-native';
 import styles from "./styles";
 import { TEXTS } from '../../common';
 import { Button } from "react-native-paper"

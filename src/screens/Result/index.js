@@ -17,7 +17,7 @@ class Result extends Component {
             <View style={styles.container} >
                 <Text style={styles.resultText} >{`${TEXTS.test_score} : `}</Text>
                 <Text style={styles.scoreText} >{`(${score} / 5)`}</Text>
-                <View style={styles.buttons} >
+                <View>
 
                     <Button
                         style={styles.buttonStyle}

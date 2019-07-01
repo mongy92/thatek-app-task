@@ -1,4 +1,8 @@
-import { LOADING_QUESTIONS, FETCH_QUESTIONS_SUCCESS, SELECT_QUESTION_ANSWER } from "../actions/actionTypes";
+import {
+    LOADING_QUESTIONS,
+    FETCH_QUESTIONS_SUCCESS,
+    SELECT_QUESTION_ANSWER
+} from "../actions/actionTypes";
 
 
 const INIT_STATE = {
@@ -22,6 +26,7 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 answers,
+                //calculate the score for the user .. count the correct answers
                 score : answers.filter(i=> i.isCorrect === true ).length
             }
         default:

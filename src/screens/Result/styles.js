@@ -20,9 +20,6 @@ const styles = StyleSheet.create({
         fontWeight:"bold",
         marginVertical:10
     },
-    buttons : {
-        // flexDirection:"row"
-    },
     buttonStyle : {
         backgroundColor : MAIN_COLOR,
         marginBottom:10

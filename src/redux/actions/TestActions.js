@@ -2,11 +2,11 @@ import { LOADING_QUESTIONS, FETCH_QUESTIONS_SUCCESS, SELECT_QUESTION_ANSWER } fr
 import { API_URL } from "../../common";
 
 
-
+//action for fetch 5 questions from the api
 export const fetchTaskQuestions = () => {
     return async (dispatch) => {
+        dispatch({ type: LOADING_QUESTIONS, payload: true });
         try {
-            dispatch({ type: LOADING_QUESTIONS, payload: true });
             const response = await fetch(API_URL);
             const json = await response.json();
             if(json.response_code === 0){
