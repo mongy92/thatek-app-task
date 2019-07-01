@@ -1,36 +1,26 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, FlatList } from 'react-native';
-import { API_URL, TEXTS, MAIN_COLOR } from '../../common';
+import { View, ActivityIndicator, FlatList } from 'react-native';
+import { TEXTS, MAIN_COLOR } from '../../common';
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux";
 import { Button } from "react-native-paper"
 import styles from "./styles"
 import QuestionCard from './QuestionCard';
-export default class Test extends Component {
+import { fetchTaskQuestions } from '../../redux/actions/TestActions';
+
+class Test extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
-      questions: [],
       selected_index: 0
     };
   }
 
   componentDidMount() {
-    this.fetchQuestions()
+    this.props.fetchTaskQuestions()
   }
 
-  fetchQuestions = async () => {
-    try {
-      const response = await fetch(API_URL);
-      const json = await response.json();
-      console.log(json)
-      if (json.response_code === 0) {
-        this.setState({ questions: json.results })
-      }
-      this.setState({ loading: false })
-    } catch (error) {
-      console.log(error)
-    }
-  }
+
 
 
   renderItem = ({ item }) => {
@@ -48,12 +38,14 @@ export default class Test extends Component {
   }
 
   render() {
-    const { loading, questions, selected_index } = this.state;
+
+    const { selected_index } = this.state;
+    const { questions, loading } = this.props;
     if (loading) return <ActivityIndicator size={"large"} />
     return (
       <View style={{ flex: 1 }}>
         <FlatList
-          style={{paddingTop:10}}
+          style={{ paddingTop: 10 }}
           scrollEnabled={false}
           ref={flatlist => this.flatlist = flatlist}
           data={questions}
@@ -70,15 +62,30 @@ export default class Test extends Component {
           <Button
             // disabled={selected_index === 4}
 
-            style={[styles.button, 
-              { backgroundColor: selected_index === 4? MAIN_COLOR : MAIN_COLOR }
+            style={[styles.button,
+            { backgroundColor: selected_index === 4 ? MAIN_COLOR : MAIN_COLOR }
             ]}
             color={"#FFF"}
             onPress={this.onPressNext}
-          >{ selected_index==4 ? TEXTS.view_result : TEXTS.next}</Button>
+          >{selected_index == 4 ? TEXTS.view_result : TEXTS.next}</Button>
 
         </View>
       </View>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    questions: state.test.questions,
+    loading: state.test.loading
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    fetchTaskQuestions
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Test);
